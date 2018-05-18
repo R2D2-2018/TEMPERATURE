@@ -2,7 +2,7 @@
 #include "catch.hpp"
 #include "../src/DHT22.hpp"
 
-TEST_CASE( "Example Test Case" ) { // example test", "[test_group][other_tag][!mayfail]
+TEST_CASE( "Example Test Case" ) {
     REQUIRE(10 == 10);
 }
 
@@ -11,7 +11,7 @@ TEST_CASE( "dht22-sensor-class temperature function" ) {
     REQUIRE(dht22.getTemperature() == 10);
 }
 
-TEST_CASE( "dht22-sensor-class" ) {
+TEST_CASE( "dht22-sensor-class pinDATA" ) {
     int pinDATA = 7;
     DHT22 dht22(pinDATA);
     REQUIRE(dht22.getPinDATA() == pinDATA);
