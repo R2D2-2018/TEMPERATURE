@@ -1,7 +1,6 @@
 #include "DHT22.hpp"
 
-DHT22::DHT22(int pinData){
-  pinDATA = pinData;
+DHT22::DHT22(int pinData) : pinDATA ( pinData ){
   temperature = 10;
 }
 
