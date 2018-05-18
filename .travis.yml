@@ -15,6 +15,7 @@ addons:
     packages:
       - cmake
       - valgrind
+      - gcc-6
 
 before_script:
   - gcc --version
