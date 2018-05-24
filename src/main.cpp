@@ -1,5 +1,5 @@
+#include "dht22.hpp"
 #include "wrap-hwlib.hpp"
-#include "DHT22.hpp"
 
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
