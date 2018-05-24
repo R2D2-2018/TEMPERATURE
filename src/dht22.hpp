@@ -1,6 +1,6 @@
 /**
  * @file dht22.hpp
- * @brief     DHT11 sensor class
+ * @brief     DHT22 sensor class
  * @author    Michel Baartman
  * @license   See LICENSE
  */
@@ -14,6 +14,14 @@ class DHT22 {
 
     int temperature; ///< Last environment temperature read
   public:
+    /**
+     * @brief DHT22 class constructor.
+     *
+     * The constructor for a DHT22 object.
+     *
+     * @param[in]    pinData     pinData is the code(int) of the pin that will be used to communicate with the sensor.
+     * @return returns a DHT22 object
+     */
     DHT22(int pinData);
 
     /**
