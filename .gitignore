@@ -1,0 +1,5 @@
+build/*
+build_test/*
+.vscode/*
+src/main_old.cpp
+test/test_main_old.cpp
