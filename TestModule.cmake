@@ -11,7 +11,7 @@ add_definitions (-DBMPTK_TARGET_test
 set (sources ${sources}
     ${unit_test_main}
     src/libc-stub.cpp
-	src/DHT22.cpp
+	src/dht22.cpp
 )
 
 set (build_test build_test)

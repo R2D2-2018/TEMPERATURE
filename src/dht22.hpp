@@ -1,5 +1,5 @@
 /**
- * @file DHT22.hpp
+ * @file dht22.hpp
  * @brief     DHT11 sensor class
  * @author    Michel Baartman
  * @license   See LICENSE

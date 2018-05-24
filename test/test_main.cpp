@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one cpp file
-#include "../src/DHT22.hpp"
+#include "../src/dht22.hpp"
 #include "catch.hpp"
 
 int pinDATA = 7;
