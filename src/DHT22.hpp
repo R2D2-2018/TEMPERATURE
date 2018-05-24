@@ -9,33 +9,30 @@
 #define DHT22_HPP
 
 class DHT22 {
-    private:
-        int pinDATA; ///< DATA pin for DHT22 sensor
-        
-        int temperature;  ///< Last environment temperature read
-    public:
-        DHT22(int pinData);
+  private:
+    int pinDATA; ///< DATA pin for DHT22 sensor
 
-        /**
-         * @brief returns the temperature variable of the DHT22 class.
-         * 
-         * Returns the temperature variable within the DHT22 class. Current set to 10 by default.
-         * 
-         * @param[in] none
-         * @return the read temperature as integer.
-         */
-        int getTemperature();
+    int temperature; ///< Last environment temperature read
+  public:
+    DHT22(int pinData);
 
-        /**
-         * @brief returns the pinDATA variable of the DHT22 class.
-         * 
-         * Returns the temperature variable within the DHT22 class. Current set to 10 by default.
-         * 
-         * @param[in] none
-         * @return the pinDATA as integer.
-         */
-        int getPinDATA();
+    /**
+     * @brief returns the temperature variable of the DHT22 class.
+     *
+     * Returns the temperature variable within the DHT22 class. Current set to 10 by default.
+     *
+     * @return the read temperature as integer.
+     */
+    int getTemperature();
 
+    /**
+     * @brief returns the pinDATA variable of the DHT22 class.
+     *
+     * Returns the temperature variable within the DHT22 class. Current set to 10 by default.
+     *
+     * @return the pinDATA as integer.
+     */
+    int getPinDATA();
 };
 
 #endif // DHT22_HPP
