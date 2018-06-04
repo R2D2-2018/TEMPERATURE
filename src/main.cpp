@@ -1,7 +1,5 @@
 #include "dht.hpp"
 #include "wrap-hwlib.hpp"
-#include <array>
-#include <bitset>
 
 int main() {
     WDT->WDT_MR = WDT_MR_WDDIS;
@@ -14,7 +12,7 @@ int main() {
 
         dht.sampleEnvironment();
         hwlib::cout << dht.getTemperature() << '\n';
-        hwlib::wait_ms(2000);
+        hwlib::wait_ms(1500);
     }
 
     return 0;

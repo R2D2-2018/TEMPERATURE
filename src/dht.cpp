@@ -12,10 +12,10 @@ int DHT::getTemperature() {
 bool DHT::checksum() {
     if (this->version == 11) {
         if ((data[0] + data[1] + data[2] + data[3]) == data[4]) {
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 void DHT::dhtWrite(char cmd) {
@@ -30,7 +30,7 @@ void DHT::dhtWrite(char cmd) {
     pin.direction_set_input();
 }
 
-int DHT::dhtReadWait() {
+int DHT::dhtWait() {
     int waitTime = 0;
     int timeOut = 8000;
     waitTime = 0;
@@ -49,7 +49,7 @@ int DHT::dhtReadWait() {
     return 1;
 }
 
-int DHT::dhtReadGetBits() {
+int DHT::dhtGetBits() {
     int waitTime = 0;
     int timeOut = 8000;
     int bitTime = 0;
@@ -83,8 +83,8 @@ int DHT::dhtReadGetBits() {
 }
 
 int DHT::dhtRead() {
-    dhtReadWait();
-    return dhtReadGetBits();
+    dhtWait();
+    return dhtGetBits();
 }
 
 void DHT::sampleEnvironment() {
