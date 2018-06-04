@@ -1,4 +1,4 @@
-#include "dht.hpp"
+#include "dht_temperature_sensor.hpp"
 #include "wrap-hwlib.hpp"
 
 int main() {

@@ -1,4 +1,4 @@
-#include "dht.hpp"
+#include "dht_temperature_sensor.hpp"
 
 DHT::DHT(hwlib::pin_in_out &pinData, int version) : pin(pinData), version(version) {
     temperature = 0;

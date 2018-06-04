@@ -12,7 +12,7 @@ set (sources ${sources}
     ${unit_test_main}
     src/libc-stub.cpp
 	src/wrap-hwlib.cpp
-	src/dht.cpp
+	src/dht_temperature_sensor.cpp
 )
 
 set (build_test build_test)
