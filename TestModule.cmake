@@ -11,7 +11,8 @@ add_definitions (-DBMPTK_TARGET_test
 set (sources ${sources}
     ${unit_test_main}
     src/libc-stub.cpp
-	src/dht22.cpp
+	src/wrap-hwlib.cpp
+	src/dht_temperature_sensor.cpp
 )
 
 set (build_test build_test)
