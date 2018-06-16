@@ -1,20 +1,14 @@
-#include "dht_temperature_sensor.hpp"
-
-DHT::DHT(hwlib::pin_in_out &pinData, int version) : pin(pinData), version(version) {
+#include "dht.hpp"
+#include "wrap-hwlib.hpp"
+DHT::DHT(hwlib::pin_in_out &pinData) : pin(pinData), Temperature() {
     temperature = 0;
-    sampleEnvironment();
-}
-
-int DHT::getTemperature() {
-    return temperature;
 }
 
 bool DHT::checksum() {
-    if (this->version == 11) {
-        if ((data[0] + data[1] + data[2] + data[3]) == data[4]) {
-            return true;
-        }
+    if ((data[0] + data[1] + data[2] + data[3]) == data[4]) {
+        return true;
     }
+
     return false;
 }
 
@@ -87,14 +81,7 @@ int DHT::dhtRead() {
     return dhtGetBits();
 }
 
-void DHT::sampleEnvironment() {
-    for (auto &byte : data) {
-        byte = 0;
-    }
-
-    dhtWrite('r');
-    dhtRead();
-    if (checksum() == 1) {
-        temperature = int(data[2]);
-    }
+int DHT::getTemperature() {
+    sampleEnvironment();
+    return temperature;
 }

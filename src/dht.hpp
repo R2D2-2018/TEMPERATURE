@@ -1,22 +1,12 @@
-/**
- * @file DHT.hpp
- * @brief     DHT sensor class
- * @author    Michel Baartman
- * @license   See LICENSE
- */
-
 #ifndef DHT_HPP
 #define DHT_HPP
-
+#include "temperature.hpp"
 #include "wrap-hwlib.hpp"
-
-class DHT {
-  private:
-    hwlib::pin_in_out &pin; ///< DATA pin for DHT sensor
+class DHT : public Temperature {
+  protected:
     int temperature;        ///< Last environment temperature read
-    int version;            ///< dht sensor version
     uint8_t data[5];        ///< data bytes sampled from sensor
-
+    hwlib::pin_in_out &pin; ///< DATA pin for DHT sensor
     /**
      * @brief Checks the current data arrays.
      *
@@ -68,36 +58,9 @@ class DHT {
     int dhtWait();
 
   public:
-    /**
-     * @brief DHT class constructor.
-     *
-     * The constructor for a DHT object. For more information about the DHT11 sensor:
-     * https://akizukidenshi.com/download/ds/aosong/DHT11.pdf
-     *
-     * @param[in]    pinData    pinData a hwlib::pin_in_out object. this is our single-wire communication to the sensor.
-     * @param[in]    version    version is an int that resembles the version of the DHT. DHT11 is the only one functioning as of
-     * now.
-     *
-     * @return returns a DHT object
-     */
-    DHT(hwlib::pin_in_out &pinData, int version);
-
-    /**
-     * @brief Returns the temperature variable of the DHT class.
-     *
-     * Returns the temperature variable within the DHT class. Current set to 0 by default.
-     * Temperature for the DHT11 sensor are the data[2] bytes at high temperature and data[3] bytes at low.
-     *
-     * @return Environment temperature as integer.
-     */
+    DHT(hwlib::pin_in_out &pinData);
+    virtual void sampleEnvironment() = 0;
     int getTemperature();
-
-    /**
-     * @brief Samples the environment.
-     *
-     * Requests a communication with the sensor and fills the data arrays resembling bytes and the temperature variable.
-     */
-    void sampleEnvironment();
 };
 
 #endif // DHT_HPP

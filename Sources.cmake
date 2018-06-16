@@ -11,5 +11,8 @@ include_directories (${catch}/single_include)
 # Source Files:
 
 set (sources
-	src/dht_temperature_sensor.cpp
+	src/dht_11.cpp
+	src/temperature.cpp
+	src/dht_22.cpp
+	src/dht.cpp
 )
