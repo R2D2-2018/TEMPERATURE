@@ -1,6 +1,6 @@
 #include "temperature.hpp"
 
-Temperature::Temperature() {
+Temperature::Temperature() : treshold(0), temperature(0) {
     ;
 }
 

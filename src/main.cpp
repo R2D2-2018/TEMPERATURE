@@ -1,6 +1,9 @@
 #include "dht_11.hpp"
 #include "dht_22.hpp"
 #include "wrap-hwlib.hpp"
+// Need because temperature contains a pure virutal function1 see:
+// https://stackoverflow.com/questions/920500/what-is-the-purpose-of-cxa-pure-virtual for more information.
+extern "C" void __cxa_pure_virtual();
 extern "C" void __cxa_pure_virtual() {
     while (true) {
     }
@@ -14,15 +17,18 @@ int main() {
 
     auto pin_dht22 = hwlib::target::pin_in_out(hwlib::target::pins::a4);
     DHT22 dht22 = DHT22(pin_dht22);
-
     hwlib::wait_ms(1200);
-    while (true) {
 
+    dht11.setTreshold(20);
+    hwlib::cout << "DHT11 Treshold value:" << dht11.getTreshold() << '\r' << '\n';
+    dht22.setTreshold(25);
+    hwlib::cout << "DHT22 Treshold value:" << dht22.getTreshold() << '\r' << '\n' << '\n';
+
+    while (true) {
         hwlib::cout << "DHT11: " << dht11.getTemperature() << '\r' << '\n';
-        dht11.setTreshold(26);
-        hwlib::cout << "Treshold value:" << dht11.getTreshold() << '\r' << '\n';
         hwlib::cout << "Above Treshold?" << dht11.checkTreshold() << '\r' << '\n';
         hwlib::cout << "DHT22: " << dht22.getTemperature() << '\r' << '\n';
+        hwlib::cout << "Above Treshold?" << dht22.checkTreshold() << '\r' << '\n';
         hwlib::wait_ms(1500);
     }
 

@@ -1,15 +1,10 @@
 #include "dht.hpp"
 #include "wrap-hwlib.hpp"
-DHT::DHT(hwlib::pin_in_out &pinData) : pin(pinData), Temperature() {
-    temperature = 0;
+DHT::DHT(hwlib::pin_in_out &pinData) : pin(pinData) {
 }
 
 bool DHT::checksum() {
-    if ((data[0] + data[1] + data[2] + data[3]) == data[4]) {
-        return true;
-    }
-
-    return false;
+    return ((data[0] + data[1] + data[2] + data[3]) == data[4]);
 }
 
 void DHT::dhtWrite(char cmd) {

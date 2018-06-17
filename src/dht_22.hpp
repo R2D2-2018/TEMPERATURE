@@ -1,7 +1,7 @@
 /**
  * @file DHT.hpp
  * @brief     DHT sensor class
- * @author    Michel Baartman
+ * @author    Michel Baartman & Jari van Dam
  * @license   See LICENSE
  */
 
@@ -20,8 +20,6 @@ class DHT22 : public DHT {
      * https://akizukidenshi.com/download/ds/aosong/DHT11.pdf
      *
      * @param[in]    pinData    pinData a hwlib::pin_in_out object. this is our single-wire communication to the sensor.
-     * @param[in]    version    version is an int that resembles the version of the DHT. DHT22 is the only one functioning as of
-     * now.
      *
      * @return returns a DHT object
      */

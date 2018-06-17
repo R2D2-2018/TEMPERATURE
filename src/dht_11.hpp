@@ -1,7 +1,7 @@
 /**
  * @file DHT.hpp
  * @brief     DHT sensor class
- * @author    Michel Baartman
+ * @author    Michel Baartman & jari van Dam
  * @license   See LICENSE
  */
 
@@ -13,6 +13,11 @@
 
 class DHT11 : public DHT {
   public:
+    /**
+     * @brief Default constructor for DHT11 sensor.
+     *
+     * @param[in]     pinData    The hwlib::pin_in_out object for the dataPin of DHT11.
+     */
     DHT11(hwlib::pin_in_out &pinData);
     /**
      * @brief Samples the environment.

@@ -1,10 +1,15 @@
+/**
+ * @file
+ * @brief     The base class for all DHT temperature sensors.
+ * @author    Jari van Dam
+ * @license   See LICENSE
+ */
 #ifndef DHT_HPP
 #define DHT_HPP
 #include "temperature.hpp"
 #include "wrap-hwlib.hpp"
 class DHT : public Temperature {
   protected:
-    int temperature;        ///< Last environment temperature read
     uint8_t data[5];        ///< data bytes sampled from sensor
     hwlib::pin_in_out &pin; ///< DATA pin for DHT sensor
     /**
@@ -58,8 +63,22 @@ class DHT : public Temperature {
     int dhtWait();
 
   public:
+    /**
+     * @brief The default constructor for the DHT class.
+     *
+     * @param[in]     pinData   The data pin of the DHT sensor.
+     */
     DHT(hwlib::pin_in_out &pinData);
+    /**
+     * @brief Virtual function that will get the data from the DHT sensor.
+     *
+     */
     virtual void sampleEnvironment() = 0;
+    /**
+     * @brief Get the current temperature of the sensor.
+     *
+     * @return The temperature as in int, decimals are left away and not rounded.
+     */
     int getTemperature();
 };
 
