@@ -9,6 +9,10 @@
 #include "temperature.hpp"
 #include "wrap-hwlib.hpp"
 class DHT : public Temperature {
+  private:
+    uint_fast64_t lastUpdate;
+    int sensorUpdateInterval;
+
   protected:
     uint8_t data[5];        ///< data bytes sampled from sensor
     hwlib::pin_in_out &pin; ///< DATA pin for DHT sensor
@@ -68,7 +72,7 @@ class DHT : public Temperature {
      *
      * @param[in]     pinData   The data pin of the DHT sensor.
      */
-    DHT(hwlib::pin_in_out &pinData);
+    DHT(hwlib::pin_in_out &pinData, int sensorUpdateInterval = 200000);
     /**
      * @brief Virtual function that will get the data from the DHT sensor.
      *

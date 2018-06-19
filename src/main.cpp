@@ -19,7 +19,7 @@ int main() {
     DHT22 dht22 = DHT22(pin_dht22);
     hwlib::wait_ms(1200);
 
-    dht11.setTreshold(20);
+    dht11.setTreshold(15);
     hwlib::cout << "DHT11 Treshold value:" << dht11.getTreshold() << '\r' << '\n';
     dht22.setTreshold(25);
     hwlib::cout << "DHT22 Treshold value:" << dht22.getTreshold() << '\r' << '\n' << '\n';
