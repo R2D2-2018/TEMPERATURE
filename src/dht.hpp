@@ -10,8 +10,8 @@
 #include "wrap-hwlib.hpp"
 class DHT : public Temperature {
   private:
-    uint_fast64_t lastUpdate;
-    int sensorUpdateInterval;
+    uint_fast64_t lastUpdate; ///< The time of the last sensor poll.
+    int sensorUpdateInterval; ///< The time needed betweeen sensor polls.
 
   protected:
     uint8_t data[5];        ///< data bytes sampled from sensor
@@ -79,7 +79,12 @@ class DHT : public Temperature {
      */
     virtual void sampleEnvironment() = 0;
     /**
-     * @brief Get the current temperature of the sensor.
+     * @brief Get the last measured temperature of the sensor.
+     *
+     * This function checks if the time since the last poll to the sensor is longer then the time required between sensor polls.
+     * This is needed because a DHT sensor can only be called once every x seconds, depending on the sensor. Therefore it will
+     * return the last measured temperature if it can't poll the sensor again, else the sensor will be polled and that value will be
+     * returned.
      *
      * @return The temperature as in int, decimals are left away and not rounded.
      */

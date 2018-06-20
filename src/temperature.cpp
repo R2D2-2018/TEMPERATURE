@@ -13,5 +13,5 @@ int Temperature::getTreshold() {
 }
 
 bool Temperature::checkTreshold() {
-    return getTemperature() > treshold;
+    return abs(getTemperature()) > abs(treshold);
 }

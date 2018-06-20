@@ -1,6 +1,7 @@
 #include "dht.hpp"
 #include "wrap-hwlib.hpp"
-DHT::DHT(hwlib::pin_in_out &pinData, int sensorUpdateInterval) : sensorUpdateInterval(sensorUpdateInterval), pin(pinData) {
+DHT::DHT(hwlib::pin_in_out &pinData, int sensorUpdateInterval)
+    : lastUpdate(0), sensorUpdateInterval(sensorUpdateInterval), pin(pinData) {
 }
 
 bool DHT::checksum() {
