@@ -19,16 +19,9 @@ int main() {
     DHT22 dht22 = DHT22(pin_dht22);
     hwlib::wait_ms(1200);
 
-    dht11.setTreshold(20);
-    hwlib::cout << "DHT11 Treshold value:" << dht11.getTreshold() << '\r' << '\n';
-    dht22.setTreshold(25);
-    hwlib::cout << "DHT22 Treshold value:" << dht22.getTreshold() << '\r' << '\n' << '\n';
-
     while (true) {
         hwlib::cout << "DHT11: " << dht11.getTemperature() << '\r' << '\n';
-        hwlib::cout << "Above Treshold?" << dht11.checkTreshold() << '\r' << '\n';
         hwlib::cout << "DHT22: " << dht22.getTemperature() << '\r' << '\n';
-        hwlib::cout << "Above Treshold?" << dht22.checkTreshold() << '\r' << '\n';
         hwlib::wait_ms(1500);
     }
 
