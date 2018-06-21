@@ -45,14 +45,13 @@ class DHT : public Temperature {
      * used for more specific troubleshooting such as -1.
      */
     int dhtRead();
-
     /**
      * @brief get bits protocol part of the read protocol
      *
      * a function that contains the bit signal protocol of the part of the entire read protocol.
      *
-     * @return returns a int whether the checksum() was succesful. 1 = succeeded. 0 = timed out. In the future more int values can
-     * be used for more specific troubleshooting such as -1.
+     * @return returns a int whether the checksum() was succesful. 1 = succeeded. 0 = timed out. In the future more int values
+     * can be used for more specific troubleshooting such as -1.
      */
     int dhtGetBits();
 
@@ -61,8 +60,7 @@ class DHT : public Temperature {
      *
      * a function that waits until it gets a start signal/bit from the sensor.
      *
-     * @return returns a int whether the start was obtained. 1 = succeeded. 0 = timed out. In the future more int values can be used
-     * for more specific troubleshooting such as -1.
+     * @return Returns a 0 when no bits a detected. Else the time between the bits is returned.
      */
     int dhtWait();
 

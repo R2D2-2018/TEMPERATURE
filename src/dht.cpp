@@ -21,50 +21,35 @@ void DHT::dhtWrite(char cmd) {
 }
 
 int DHT::dhtWait() {
+    int bitTime = 0;
     int waitTime = 0;
     int timeOut = 8000;
-    waitTime = 0;
     while (pin.get() != 1) {
         if (waitTime >= timeOut) {
             return 0;
         }
         waitTime++;
     }
+    waitTime = 0;
+    bitTime = hwlib::now_us();
     while (pin.get() != 0) {
         if (waitTime >= timeOut) {
             return 0;
         }
         waitTime++;
     }
-    return 1;
+    return bitTime;
 }
 
 int DHT::dhtGetBits() {
-    int waitTime = 0;
-    int timeOut = 8000;
     int bitTime = 0;
-    int bitTimeCompare = 0;
     for (auto &byte : data) {
         for (int b = 7; b >= 0; b--) {
-            waitTime = 0;
-            while (pin.get() != 1) {
-                if (waitTime >= timeOut) {
-                    return 0;
-                }
-                waitTime++;
+            bitTime = dhtWait();
+            if (bitTime == 0) {
+                return 0;
             }
-
-            waitTime = 0;
-            bitTime = hwlib::now_us();
-            while (pin.get() != 0) {
-                if (waitTime >= timeOut) {
-                    return 0;
-                }
-                waitTime++;
-            }
-
-            bitTimeCompare = hwlib::now_us();
-            if ((bitTimeCompare - bitTime) > 40) {
+            if ((hwlib::now_us() - bitTime) > 40) {
                 byte |= (1 << b);
             }
         }
