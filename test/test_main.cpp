@@ -39,3 +39,16 @@ TEST_CASE("negative value tresholding") {
     dht.setTemperature(-20);
     REQUIRE(dht.checkTreshold());
 }
+
+TEST_CASE("tresholding around zero") {
+    hwlib::test::pin_in_out<14 * 8> pin;
+    DHTMock dht = DHTMock(pin);
+    dht.setTreshold(0);
+
+    REQUIRE(dht.getTreshold() == 0);
+
+    REQUIRE_FALSE(dht.checkTreshold());
+
+    dht.setTemperature(5);
+    REQUIRE(dht.checkTreshold());
+}
