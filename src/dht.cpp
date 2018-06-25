@@ -1,6 +1,7 @@
 #include "dht.hpp"
 #include "wrap-hwlib.hpp"
-DHT::DHT(hwlib::pin_in_out &pinData) : pin(pinData) {
+DHT::DHT(hwlib::pin_in_out &pinData, int sensorUpdateInterval)
+    : lastUpdate(0), sensorUpdateInterval(sensorUpdateInterval), pin(pinData) {
 }
 
 bool DHT::checksum() {
@@ -62,6 +63,9 @@ int DHT::dhtRead() {
 }
 
 int DHT::getTemperature() {
-    sampleEnvironment();
+    if (hwlib::now_us() - lastUpdate > 200000) {
+        lastUpdate = hwlib::now_us();
+        sampleEnvironment();
+    }
     return temperature;
 }

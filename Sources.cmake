@@ -15,4 +15,5 @@ set (sources
 	src/temperature.cpp
 	src/dht_22.cpp
 	src/dht.cpp
+	src/dht_mock.cpp
 )
