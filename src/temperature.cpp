@@ -1,5 +1,5 @@
 #include "temperature.hpp"
-
+#include "wrap-hwlib.hpp"
 Temperature::Temperature() : treshold(0), temperature(0) {
     ;
 }
@@ -13,5 +13,5 @@ int Temperature::getTreshold() {
 }
 
 bool Temperature::checkTreshold() {
-    return false;
+    return abs(getTemperature()) > abs(treshold);
 }

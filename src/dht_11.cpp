@@ -1,6 +1,6 @@
 #include "dht_11.hpp"
 #include "wrap-hwlib.hpp"
-DHT11::DHT11(hwlib::pin_in_out &pinData) : DHT(pinData) {
+DHT11::DHT11(hwlib::pin_in_out &pinData) : DHT(pinData, 120000) {
 }
 
 void DHT11::sampleEnvironment() {
