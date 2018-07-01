@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN // This tells Catch to provide a main() - only do this in one cpp file
-#include "../src/dht_11.hpp"
-#include "../src/dht_22.hpp"
-#include "../src/dht_mock.hpp"
 #include "catch.hpp"
+#include "dht_11.hpp"
+#include "dht_22.hpp"
+#include "dht_mock.hpp"
 #include "wrap-hwlib.hpp"
 
 TEST_CASE("getTemperature DHTMock") {
