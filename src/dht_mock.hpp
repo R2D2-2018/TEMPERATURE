@@ -13,7 +13,7 @@
 
 class DHTMock : public DHT {
   private:
-    int desire_temperature;
+    int desireTemperature;
 
   public:
     /**
@@ -34,6 +34,11 @@ class DHTMock : public DHT {
      */
     void sampleEnvironment();
 
+    /**
+     * @brief Sets desireTemperature and temperature variable to temp
+     *
+     * @param[in]     temp    An integer representing a measured temperature
+     */
     void setTemperature(int temp);
 };
 

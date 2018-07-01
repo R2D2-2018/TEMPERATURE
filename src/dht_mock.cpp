@@ -5,10 +5,10 @@ DHTMock::DHTMock(hwlib::pin_in_out &pinData) : DHT(pinData, 200000) {
 }
 
 void DHTMock::sampleEnvironment() {
-    temperature = desire_temperature;
+    temperature = desireTemperature;
 }
 
 void DHTMock::setTemperature(int temp) {
-    desire_temperature = temp;
+    desireTemperature = temp;
     temperature = temp;
 }

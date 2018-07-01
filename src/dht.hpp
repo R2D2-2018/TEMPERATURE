@@ -68,7 +68,8 @@ class DHT : public Temperature {
     /**
      * @brief The default constructor for the DHT class.
      *
-     * @param[in]     pinData   The data pin of the DHT sensor.
+     * @param[in]     pinData               The data pin of the DHT sensor.
+     * @param[in]     sensorUpdateInterval  The interval the sensor uses for updates
      */
     DHT(hwlib::pin_in_out &pinData, int sensorUpdateInterval = 200000);
     /**
